@@ -46,7 +46,7 @@
     {{/if}}
 
     <p>Dates seen:</p>
-  <!--changed from dateseen string to display arrau in a UL-->
+  <!--changed from dateseen string to display array in a UL-->
     <ul>
         <!--#each loops over the list-->
         <!--over each bird  .this-->
@@ -63,7 +63,7 @@
     </ul>
 
     <P>Add new date seen</P>
-
+<!--creates a update date input to existing birds-->
     <form action="/addDate" method="POST">
       <input name="dateSeen" type="datetime-local" required>
         <!--test. required gets client side message to user-->
@@ -73,8 +73,17 @@
       <input name="add" type="submit" value="Add new date">
     </form>
 
-    <hr>
+      <!--delete a bird entry-->
+    <form class="delete_form" action="/deleteBird" method="post">
+        <!--Name: <input name="name" type="text" required>-->
+        <!--Name: <input name="name_delete" type="text" required>-->
+        <input type="hidden" name="_id" value="{{this._id}}">
+        <input class="delete_button" type="submit" name="delete" value="Delete">
+        <!--<input ty="text" name="name"  placeholder="Bird">-->
 
+    </form>
+  <br>
+      <hr>
   {{else}}
     <p>No bird records in the database</p>
   {{/each}}

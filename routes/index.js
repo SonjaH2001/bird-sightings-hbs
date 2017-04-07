@@ -122,7 +122,27 @@ router.post('/addDate', function(req, res, next){
       return res.redirect('/');  //If saved successfully, redirect to main page
     })
   });
+// ALWAYS check where the block is
+    // router.post('/deleteBird', function(req, res,next) {
+    //   var id = req.body._id;
+    //   Bird.findByIdAndRemove(id, function(err) {
+    //     if (err){
+    //       return next(err);
+    //     }
+    //       req.flash('info', 'Deleted');
+    //     return res.redirect('/')
+    //   })
+    // });
 });
-
-
+// This deletes.  uses the hidden ID
+router.post('/deleteBird', function(req, res,next) {
+    var id = req.body._id;
+    Bird.findByIdAndRemove(id, function(err) {
+        if (err){
+            return next(err);
+        }
+        req.flash('info', 'Deleted');
+        return res.redirect('/')
+    })
+});//end of callback
 module.exports = router;
