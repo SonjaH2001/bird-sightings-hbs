@@ -34,7 +34,7 @@
 <div class="birdsSeen">
 
   <h3>All sightings</h3>
-
+<!--#each loops over each item-->
   {{# each birds}}
     <p>Name: {{this.name}}</p>
     <p>Description: {{this.description}}</p>
@@ -46,10 +46,15 @@
     {{/if}}
 
     <p>Dates seen:</p>
+  <!--changed from dateseen string to display arrau in a UL-->
     <ul>
+        <!--#each loops over the list-->
+        <!--over each bird  .this-->
     {{#each this.datesSeen}}
       <li>
-        {{dateFormatter this}}
+          <!--helperName and parameter-->
+          <!--calls the helper function with parameter given-->
+        {{dateFormatter this}}<!--this comes from the helper-->
       </li>
       <li>{{this}}</li>
     {{else}}
@@ -61,6 +66,8 @@
 
     <form action="/addDate" method="POST">
       <input name="dateSeen" type="datetime-local" required>
+        <!--test. required gets client side message to user-->
+        <!--<input name="loacleSeen" type="local" required>-->
       <input name="_id" type="hidden" value="{{this._id}}">
       <input name="name" type="hidden" value="{{this.name}}">
       <input name="add" type="submit" value="Add new date">
