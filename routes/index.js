@@ -145,4 +145,14 @@ router.post('/deleteBird', function(req, res,next) {
         return res.redirect('/')
     })
 });//end of callback
+router.post('/updateBird', function(req, res, next) {
+  var id = req.body._id;
+  Bird.findOne({'_id': id}, function (err, id) {
+      if (err) {
+        return next(err);
+      }
+      req.flash('info', 'Updated');
+      return res.redirect('/')
+  })
+})
 module.exports = router;

@@ -25,7 +25,7 @@
     <br>
     Date seen: <input name="dateSeen" type="datetime-local">
     <br>
-    <input name="addBird" type="submit" value="Add new sighting">
+    <input name="addBird" type="submit" value="Add new bird sighting">
     <br>
   </form>
 
@@ -80,7 +80,11 @@
         <input type="hidden" name="_id" value="{{this._id}}">
         <input class="delete_button" type="submit" name="delete" value="Delete">
         <!--<input ty="text" name="name"  placeholder="Bird">-->
+    </form>
 
+    <form class="update_form" action="/modifyBird" method="post">
+        <input type="hidden" name="_id" value="{{this._id}}">
+        <input class="update_button" type="submit" name="update" value="Update this record">
     </form>
   <br>
       <hr>
